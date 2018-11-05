@@ -1,0 +1,13 @@
+new myGame, ack, stdoutAck(`rho:io:stdoutAck`) in {
+
+    stdoutAck!("In myGame, David wins", *ack)
+    |
+    @"nthcallerfactory"!(*myGame, 2)
+    |
+    for (_<-ack) {
+        myGame!("Valentine", *ack)
+        |
+        
+    }
+
+}
