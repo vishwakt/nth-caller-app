@@ -1,0 +1,18 @@
+contract @"nthcallerfactory" ( gameId, @n) = {
+    new countCh in {
+        countCh!(1) |
+
+        contract gameId (@name, result) = {
+
+            for (@oldCount <- countCh) {
+                if (n == oldCount) {
+                    result!("Congrats " ++ name ++ ", you win.")
+                } else {
+                    result!("Sorry " ++ name ++ ", please try again.")
+                    |
+                    countCh!(oldCount+1)
+                }
+            }
+        }
+    }
+}
