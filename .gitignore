@@ -1,4 +1,4 @@
 RNode related commands
 RNode_keys.txt
 .DS_Store
-./nth-caller-app/node_modules/
+nth-caller-app/node_modules

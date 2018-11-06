@@ -1,0 +1,17 @@
+{
+  "name": "nth-caller-game",
+  "version": "1.0.0",
+  "description": "demo rchain dapp",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "*",
+    "body-parser": "*",
+    "grpc": "*",
+    "rchain-api": "https://github.com/rchain/rchain-api"
+  },
+  "author": "",
+  "license": "ISC"
+}
