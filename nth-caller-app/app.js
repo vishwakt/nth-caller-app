@@ -32,7 +32,7 @@ app.listen(uiPort, () => {
 // Handle registration of new games
 app.post('/register', (req, res) => {
     let code = `@"nthcallerfactory"!("${req.body.id}", ${req.body.n})`
-    let deployData = {term:code, timestamp: new Date(),phloLimit:"1"}
+    let deployData = {term:code, phloLimit:{value:1}, phloPrice:{value:1}}
 	console.log(deployData);
 
     myNode.doDeploy(deployData).then(result => {
