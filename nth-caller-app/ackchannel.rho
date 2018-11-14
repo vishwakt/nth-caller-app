@@ -1,0 +1,9 @@
+new myAckChannel,
+    stdout(`rho:io:stdout`),
+    stdoutAck(`rho:io:stdoutAck`) in {
+        stdoutAck!("Some Ack here.", *myAckChannel)
+    |
+    for (ack <- myAckChannel) {
+        stdout!("Received an Ack here.")
+    }
+}

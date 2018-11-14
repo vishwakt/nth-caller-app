@@ -14,13 +14,11 @@ process.argv[3] : "40401"
 
 var uiPort = process.argv[4] ?
 process.argv[4] : "8080"
-
 //Setup express app and Rnode connection
 var myNode = RNode(grpc, {host, port})
 var app = express()
 app.use(bodyParser.json())
 app.use(express.static(__dirname))
-
 
 //Start express app
 app.listen(uiPort, () => {
@@ -32,8 +30,13 @@ app.listen(uiPort, () => {
 // Handle registration of new games
 app.post('/register', (req, res) => {
     let code = `@"nthcallerfactory"!("${req.body.id}", ${req.body.n})`
-    let deployData = {term:code, phloLimit:{value:1}, phloPrice:{value:1}}
-	console.log(deployData);
+    let deployData = {
+		term:code,
+		timestamp: (new Date()).valueOf(), 
+		phloLimit:{value:1}, 
+		phloPrice:{value:1}
+		}
+	//console.log(deployData);
 
     myNode.doDeploy(deployData).then(result => {
 
@@ -46,3 +49,4 @@ app.post('/register', (req, res) => {
         console.log(oops);
     })
 })
+

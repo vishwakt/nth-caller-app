@@ -1,0 +1,9 @@
+new stdout(`rho:io:stdout`) in {
+    contract @"pizzaShop"(order) = {
+        stdout!("Pizza order received: " ++ *order)
+    }
+    |
+    @"pizzaShop"!("Cheese Pizza ")
+    |
+    @"pizzaShop"!("Cheesy Pizza ")
+}

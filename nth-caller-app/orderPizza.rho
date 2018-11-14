@@ -1,0 +1,5 @@
+new stdout(`rho:io:stdout`) in {    
+    @"pizzaShop"!("Cheeeeeeeeesy Pizza ")
+    |
+    stdout!("Cheesy Pizza order received")   
+}
