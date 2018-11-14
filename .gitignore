@@ -3,3 +3,6 @@ RNode_keys.txt
 .DS_Store
 nth-caller-app/node_modules
 client.js.save
+Node help/
+asset-tracker-app/
+nth-caller-app/package-lock.json
