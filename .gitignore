@@ -2,3 +2,6 @@ RNode related commands
 RNode_keys.txt
 .DS_Store
 nth-caller-app/node_modules
+Node help/
+asset-tracker-app/
+nth-caller-app/package-lock.json
