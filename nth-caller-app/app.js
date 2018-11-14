@@ -53,7 +53,7 @@ app.post('/register', (req, res) => {
 
 //Handle players calling the numbers to win
 
-app.post('/call', (req, res)) => {
+app.post('/call', (req, res) => {
     let ack = Math.random().toString(36).substring(7)
 
     let code = `@"${req.body.id}"!("${req.body.name}", "${ack}")`
