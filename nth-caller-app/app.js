@@ -33,7 +33,7 @@ app.post('/register', (req, res) => {
     let deployData = {
 		term:code,
 		timestamp: (new Date()).valueOf(), 
-		phloLimit:{value:1}, 
+		phloLimit:{value:999999}, 
 		phloPrice:{value:1}
 		}
 	//console.log(deployData);
@@ -49,4 +49,43 @@ app.post('/register', (req, res) => {
         console.log(oops);
     })
 })
+
+
+//Handle players calling the numbers to win
+
+app.post('/call', (req, res)) => {
+    let ack = Math.random().toString(36).substring(7)
+
+    let code = `@"${req.body.id}"!("${req.body.name}", "${ack}")`
+
+    let deployData = {
+		term:code,
+		timestamp: (new Date()).valueOf(), 
+		phloLimit:{value:1}, 
+		phloPrice:{value:1}
+        }
+        
+    myNode.doDeploy(deployData).then(_ => {
+        return myNode.createBlock()
+    }).then(_ => {
+        return
+        myNode.listenForDataAtName(ack)
+    }).then((blockResults) => {
+        if (blockResults.length === 0){
+            res.end(JSON.stringify({success:false}))
+            return
+        }
+        var lastBlock = blockResults.slice(-1).pop()
+        var lastDatum = lastBlock.postBlockchainData.slice(-1).pop()
+
+        res.end(JSON.stringify(
+            {
+                success: true,
+                message: RHOcore.toRholang(lastDatum),
+            }
+        ))
+    }).catch(oops => {
+        console.log(oops);
+    })
+}
 
