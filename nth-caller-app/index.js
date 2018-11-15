@@ -13,7 +13,7 @@ const deploy1 = {
 main();
 
 async function main() {
-    const message1 = await myNode.doDeploy(deploy1);
+    const message1 = await myNode.doDeploy(deploy1, true);
     console.log("deploy 1 was: " + message1)
 
 }
